@@ -1,7 +1,5 @@
 import Vue from "vue";
-
-import VueApexCharts from "apexcharts";
-
+import VueApexCharts from "vue-apexcharts";
 Vue.use(VueApexCharts);
 
 // eslint-disable-next-line vue/multi-word-component-names
