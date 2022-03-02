@@ -4,6 +4,7 @@ import router from "./plugins/router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "./plugins/vueapexcharts";
+import "./plugins/vueaxios";
 
 Vue.config.productionTip = false;
 

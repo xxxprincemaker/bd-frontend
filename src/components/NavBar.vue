@@ -42,7 +42,8 @@
       </transition>
       <transition name="scroll-x-reverse-transition">
         <v-text-field v-if="showBusca" v-model="buscarElemento" clearable label="Buscar" solo dense rounded
-                      light v-click-outside="showBuscar" style="max-width: 350px" class="pt-5 pl-6" />
+                      light v-click-outside="showBuscar" style="max-width: 350px" class="pt-5 pl-6"
+                      @keyup.enter.native="findMovieOrSeries()" />
       </transition>
     </v-app-bar>
     <v-navigation-drawer color="secondary" v-model="showBar" app>
@@ -69,12 +70,15 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "NavBar",
   data: () => ({
     showBar: false,
     showBusca: false,
     buscarElemento: "",
+    buscarElementoURL: "",
     items: [
       ["mdi-popcorn", "Filmes", "/movies"],
       ["mdi-television", "Séries", "/series"],
@@ -89,6 +93,19 @@ export default {
     },
     showBuscar() {
       this.showBusca = !this.showBusca;
+    },
+    async findMovieOrSeries() {
+      let query = this.changeSearchToURL();
+      await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=cc6013c19c9720200260a7c36d27130a&language=en-US&query=${query}&include_adult=true`)
+            .then(response => {
+                this.results = response.data.results;
+              });
+      console.log(this.buscarElementoURL);
+      console.log(this.results);
+    },
+    changeSearchToURL(){
+      this.buscarElementoURL = this.buscarElemento.replaceAll(' ', '%20');
+      return this.buscarElementoURL;
     }
   }
 };
