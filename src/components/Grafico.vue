@@ -1,20 +1,25 @@
 <template>
-  <div>
-    <v-layout justify-center>
-      <apexchart
-        width="500"
-        type="bar"
-        :options="options"
-        :series="series"
-      ></apexchart>
-    </v-layout>
-  </div>
+  <v-layout justify-center>
+    <apexchart
+      width="500"
+      type="bar"
+      :options="options"
+      :series="series"
+      :title="titulo"
+      :id="titulo"
+    ></apexchart>
+  </v-layout>
 </template>
 
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Grafico",
+  props: {
+    titulo: String,
+    optionss: [],
+    seriess: [],
+  },
   data: function () {
     return {
       options: {
