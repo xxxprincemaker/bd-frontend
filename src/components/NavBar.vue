@@ -3,43 +3,64 @@
     <v-app-bar app flat color="primary" dark>
       <v-toolbar-items>
         <v-btn @click="showSideBar()" icon>
-          <v-icon> mdi-menu </v-icon>
+          <v-icon> mdi-menu</v-icon>
         </v-btn>
       </v-toolbar-items>
       <div class="d-flex align-center">
-        <v-img
-          alt="Rotten Tomatoes Img"
-          class="shrink mr-2"
-          contain
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1200px-Rotten_Tomatoes.svg.png"
-          transition="scale-transition"
-          width="40"
-        />
+        <v-card to="/">
+          <v-col>
+            <v-row>
+              <v-img
+                alt="Rotten Tomatoes Img"
+                class="shrink mr-2"
+                contain
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/1200px-Rotten_Tomatoes.svg.png"
+                transition="scale-transition"
+                width="40"
+              />
 
-        <v-img
-          alt="Rotten Tomatoes Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Rotten_Tomatoes_logo.svg/1200px-Rotten_Tomatoes_logo.svg.png"
-          width="100"
-        />
+              <v-img
+                alt="Rotten Tomatoes Name"
+                class="shrink mt-1 hidden-sm-and-down"
+                contain
+                min-width="100"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Rotten_Tomatoes_logo.svg/1200px-Rotten_Tomatoes_logo.svg.png"
+                width="100"
+
+              />
+            </v-row>
+          </v-col>
+        </v-card>
       </div>
+
+      <transition name="scale-transition">
+        <v-btn icon class="pl-3" @click="showBuscar" v-if="!showBusca">
+          <v-icon>
+            mdi-magnify
+          </v-icon>
+        </v-btn>
+      </transition>
+      <transition name="scroll-x-reverse-transition">
+        <v-text-field v-if="showBusca" v-model="buscarElemento" clearable label="Buscar" solo dense rounded
+                      light v-click-outside="showBuscar" style="max-width: 350px" class="pt-5 pl-6" />
+      </transition>
     </v-app-bar>
     <v-navigation-drawer color="secondary" v-model="showBar" app>
       <v-list>
+        <v-divider />
         <v-list-item
-          v-for="([icon, text], i) in items"
+          v-for="([icon, text, rout], i) in items"
           :key="i"
           link
-          color="text"
+          :to="rout"
         >
           <v-list-item-icon>
-            <v-icon>{{ icon }}</v-icon>
+            <v-icon style="color: whitesmoke">{{ icon }}</v-icon>
           </v-list-item-icon>
-
           <v-list-item-content>
-            <v-list-item-title>{{ text }}</v-list-item-title>
+            <v-list-item-title style="color: whitesmoke"
+            >{{ text }}
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -52,18 +73,24 @@ export default {
   name: "NavBar",
   data: () => ({
     showBar: false,
+    showBusca: false,
+    buscarElemento: "",
     items: [
-      ["mdi-email", "Inbox"],
-      ["mdi-account-supervisor-circle", "Supervisors"],
-      ["mdi-clock-start", "Clock-in"],
-    ],
+      ["mdi-popcorn", "Filmes", "/movies"],
+      ["mdi-television", "Séries", "/series"],
+      ["mdi-account-supervisor-circle", "Diretor", "/directors"],
+      ["mdi-account", "Atores", "/actors"]
+    ]
   }),
 
   methods: {
     showSideBar() {
       this.showBar = !this.showBar;
     },
-  },
+    showBuscar() {
+      this.showBusca = !this.showBusca;
+    }
+  }
 };
 </script>
 
