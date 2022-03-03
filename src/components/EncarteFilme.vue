@@ -18,13 +18,25 @@
             >
             </v-img>
             <v-container >
-              <v-row>
-                <v-img
-                  src="https://freesvg.org/img/Gerald-G-Simple-Fruit-FF-Menu-5.png"
+              <v-row class='pt-2'>
+                <v-img v-if="card.vote_average*10 > 60"
+                  src="https://i.imgur.com/umG4jLw.png"
                   max-width="18px"
                 />
-                <span style="color: white; padding-left: 3px;"> 100% </span>
-                <v-card-text v-text="card.title" />
+                <v-img v-else-if="card.vote_average*10 > 0"
+                  src="https://i.imgur.com/NzQK8zJ.png"
+                  max-width="18px"
+                />
+
+                <v-img v-else
+                  src="https://i.imgur.com/TSbgElk.png"
+                  max-width="18px"
+                />
+
+                <span v-if="card.vote_average*10 > 0" style="color: white; padding-left: 3px; letter-spacing: .016em; line-height:1;"> {{card.vote_average*10}}%</span>
+                <span v-else style="color: white; padding-left: 3px; letter-spacing: .016em; line-height:1;"> -- </span>
+
+                <v-card-text v-text="card.title"  />
               </v-row>
 
             </v-container>
@@ -68,5 +80,9 @@ export default {
 <style scoped>
 .v-card__text {
   color: white;
+  font-size: .875rem;
+  line-height: 1.4;
+  margin-bottom: 0.625rem;
+  padding-left: 5px;
 }
 </style>
