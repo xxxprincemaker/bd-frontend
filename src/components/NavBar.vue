@@ -7,7 +7,7 @@
         </v-btn>
       </v-toolbar-items>
       <div class="d-flex align-center">
-        <v-card to="/">
+        <v-card to="/" @click="popularData(null)">
           <v-col>
             <v-row>
               <v-img
@@ -79,7 +79,6 @@ export default {
     showBar: false,
     showBusca: false,
     buscarElemento: "",
-    buscarElementoURL: "",
     results: Object,
     items: [
       ["mdi-popcorn", "Filmes", "/movies"],
@@ -97,19 +96,16 @@ export default {
       this.showBusca = !this.showBusca;
     },
     async findMovieOrSeries() {
-      let query = this.changeSearchToURL();
-      await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=cc6013c19c9720200260a7c36d27130a&language=en-US&query=${query}&include_adult=true`)
+      let query = this.buscarElemento.replaceAll(' ', '%20');
+      await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=cc6013c19c9720200260a7c36d27130a&language=en-US&query=${query}&include_adult=false`)
             .then(response => {
                 this.results = response.data.results;
               });
-      console.log(this.buscarElementoURL);
       console.log(this.results);
-      let poster_path = this.results["poster_path"];
-      return "https://image.tmdb.org/t/p/w500" + poster_path;
+      this.popularData(this.results);
     },
-    changeSearchToURL(){
-      this.buscarElementoURL = this.buscarElemento.replaceAll(' ', '%20');
-      return this.buscarElementoURL;
+    popularData(data) {
+      this.$store.commit('popularSearchDataTMDBAP', data);
     }
   }
 };

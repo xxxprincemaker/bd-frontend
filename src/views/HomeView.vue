@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <EncarteFilme></EncarteFilme>
+    <EncarteFilme ></EncarteFilme>
   </div>
 </template>
 

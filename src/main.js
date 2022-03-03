@@ -5,6 +5,7 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "./plugins/vueapexcharts";
 import "./plugins/vueaxios";
+import "./store/index"
 
 Vue.config.productionTip = false;
 

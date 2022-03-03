@@ -4,9 +4,15 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    searchDataTMDBAPI: []
+  },
   getters: {},
-  mutations: {},
+  mutations: {
+    popularSearchDataTMDBAP: (state, data) => {
+      state.searchDataTMDBAPI = data;
+    }
+  },
   actions: {},
   modules: {},
 });
