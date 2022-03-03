@@ -67,6 +67,7 @@
       </v-list>
     </v-navigation-drawer>
   </nav>
+
 </template>
 
 <script>
@@ -79,6 +80,7 @@ export default {
     showBusca: false,
     buscarElemento: "",
     buscarElementoURL: "",
+    results: Object,
     items: [
       ["mdi-popcorn", "Filmes", "/movies"],
       ["mdi-television", "Séries", "/series"],
@@ -102,6 +104,8 @@ export default {
               });
       console.log(this.buscarElementoURL);
       console.log(this.results);
+      let poster_path = this.results["poster_path"];
+      return "https://image.tmdb.org/t/p/w500" + poster_path;
     },
     changeSearchToURL(){
       this.buscarElementoURL = this.buscarElemento.replaceAll(' ', '%20');
