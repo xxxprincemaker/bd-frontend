@@ -4,7 +4,7 @@ import VueAxios from "vue-axios";
 
 
 const instance = axios.create({
-  baseURL: process.env.BASE_URL
+  baseURL: process.env.Vue_Api
 });
 
 Vue.use(VueAxios, instance)

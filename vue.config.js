@@ -11,5 +11,9 @@ module.exports = {
       .end()
       .use('vue-svg-loader')
       .loader('vue-svg-loader');
+
   },
+  devServer: {
+    proxy: 'http://localhost:80/rotten_tomatoes/API.php?route=',
+  }
 };

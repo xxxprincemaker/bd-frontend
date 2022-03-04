@@ -50,20 +50,6 @@
 <script>
 
 export default {
-  data: () => ({
-    cards: [
-      {
-        title: "The Batman",
-        src: "https://i0.wp.com/gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2022/01/Batman-Novo-Poster.jpeg",
-        flex: 2
-      },
-      {
-        title: "Tick, Tick... Boom!",
-        src: "https://upload.wikimedia.org/wikipedia/pt/9/91/Tick_Tick_Boom_Movie_poster.jpg",
-        flex: 2
-      }
-    ]
-  }),
   methods: {
     urlImage(url) {
       return "https://image.tmdb.org/t/p/w500" + url;

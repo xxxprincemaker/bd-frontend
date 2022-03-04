@@ -72,6 +72,7 @@
 
 <script>
 import axios from "axios";
+import rotasService from "@/services/rotas.service";
 
 export default {
   name: "NavBar",
@@ -79,10 +80,10 @@ export default {
     showBar: false,
     showBusca: false,
     buscarElemento: "",
+    elemento: Object,
     results: Object,
     items: [
       ["mdi-popcorn", "Filmes", "/movies"],
-      ["mdi-television", "Séries", "/series"],
       ["mdi-account-supervisor-circle", "Diretor", "/directors"],
       ["mdi-account", "Atores", "/actors"]
     ]
@@ -95,17 +96,24 @@ export default {
     showBuscar() {
       this.showBusca = !this.showBusca;
     },
+    async importarRota(rotaId){
+      await rotasService.recuperarRota(rotaId).then( response => {
+        this.elemento = response.data;
+      })
+      console.log(this.elemento);
+    },
     async findMovieOrSeries() {
-      let query = this.buscarElemento.replaceAll(' ', '%20');
+      let query = this.buscarElemento.replaceAll(" ", "%20");
       await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=cc6013c19c9720200260a7c36d27130a&language=en-US&query=${query}&include_adult=false`)
-            .then(response => {
-                this.results = response.data.results;
-              });
+        .then(response => {
+          this.results = response.data.results;
+        });
       console.log(this.results);
       this.popularData(this.results);
+      await this.importarRota(5);
     },
     popularData(data) {
-      this.$store.commit('popularSearchDataTMDBAP', data);
+      this.$store.commit("popularSearchDataTMDBAP", data);
     }
   }
 };
