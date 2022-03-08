@@ -45,31 +45,36 @@
           </v-card>
         </v-col>
         <v-dialog v-model="maisInformacoes" max-width="800" max-height="800" transition>
-          <v-card color="black" max-width="800" max-height="800">
+          <v-card color="black" max-width="800" max-height="400px">
             <v-col>
-              <v-row>
-                <v-img
+              <v-row>     
+                <v-img class="justify-top"
                   :src="urlImage(this.filmeSelecionado.poster_path)"
-                  height="650px"
-                  width="350px"
-                >
+                  max-height="400px"
+                  max-width="280px"
+                > 
                 </v-img>
-              </v-row>
-            </v-col>
-            <v-container>
-              <v-row class="pt-2">
+
+              <v-container style="width:64%">
+                <v-card-title style="color: whitesmoke;" class="justify-center" >
+                  {{ this.filmeSelecionado.title }}
+                </v-card-title> 
+                <center>
                 <v-img v-if="this.filmeSelecionado.vote_average*10 > 60"
                        src="https://i.imgur.com/umG4jLw.png"
                        max-width="50px"
+                       max-height="50px"
                 />
                 <v-img v-else-if="this.filmeSelecionado.vote_average*10 > 0"
                        src="https://i.imgur.com/NzQK8zJ.png"
                        max-width="50px"
+                       max-height="50px"
                 />
 
                 <v-img v-else
                        src="https://i.imgur.com/TSbgElk.png"
                        max-width="50px"
+                       max-height="50px"
                 />
 
                 <span v-if="this.filmeSelecionado.vote_average*10 > 0"
@@ -77,15 +82,16 @@
                   }}%</span>
                 <span v-else
                       style="color: white; padding-left: 3px; letter-spacing: .016em; line-height:1;"> -- </span>
-
-                <v-card-title style="color: whitesmoke">
-                  {{ this.filmeSelecionado.title }}
-                </v-card-title>
-              </v-row>
-            </v-container>
+                </center>
             <v-card-text style="color: whitesmoke; animation-fill-mode: revert">
               {{ this.filmeSelecionado.overview }}
-            </v-card-text>
+            </v-card-text>               
+                </v-container>
+                
+              </v-row>
+              
+            </v-col>
+          
           </v-card>
           <v-card color="black">
             <v-card-title style="color: whitesmoke"> Reviews </v-card-title>
