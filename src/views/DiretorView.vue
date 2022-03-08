@@ -34,28 +34,12 @@ export default {
   data () {
     return {
       rota6: [],
-      rota7: [],
-      rota8: [],
-      rota9: [],
-      rota10: []
     }
   },
   methods: {
     async importarQuery(){
       await rotasService.recuperarRota(6).then(response => {
         this.rota6 = response.data;
-      }).catch( () => {} )
-      await rotasService.recuperarRota(7).then(response => {
-        this.rota7 = response.data;
-      }).catch( () => {} )
-      await rotasService.recuperarRota(8).then(response => {
-        this.rota8 = response.data;
-      }).catch( () => {} )
-      await rotasService.recuperarRota(9).then(response => {
-        this.rota9 = response.data;
-      }).catch( () => {} )
-      await rotasService.recuperarRota(10).then(response => {
-        this.rota10 = response.data;
       }).catch( () => {} )
     }
   },

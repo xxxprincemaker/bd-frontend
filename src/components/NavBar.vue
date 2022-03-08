@@ -110,7 +110,6 @@ export default {
         });
       console.log(this.results);
       this.popularData(this.results);
-      await this.importarRota(5);
     },
     async upcoming() {
       await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=cc6013c19c9720200260a7c36d27130a&language=en-US&page=1`)
