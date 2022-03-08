@@ -1,7 +1,19 @@
 <template>
   <div class="filmes">
-     <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES DE 2010 </v-card-title>
+     <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
      <Grafico></Grafico>
+    <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
+    <Grafico></Grafico>
+    <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
+    <Grafico></Grafico>
+    <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
+    <Grafico></Grafico>
+    <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
+    <Grafico></Grafico>
+    <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
+    <Grafico></Grafico>
+    <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
+    <Grafico></Grafico>
   </div>
 </template>
 <script>
