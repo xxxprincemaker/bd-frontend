@@ -59,30 +59,32 @@
                 <v-card-title style="color: whitesmoke;" class="justify-center" >
                   {{ this.filmeSelecionado.title }}
                 </v-card-title> 
+                <br>
                 <center>
                 <v-img v-if="this.filmeSelecionado.vote_average*10 > 60"
                        src="https://i.imgur.com/umG4jLw.png"
-                       max-width="50px"
-                       max-height="50px"
+                       max-width="48px"
+                       max-height="48px"
                 />
                 <v-img v-else-if="this.filmeSelecionado.vote_average*10 > 0"
                        src="https://i.imgur.com/NzQK8zJ.png"
-                       max-width="50px"
-                       max-height="50px"
+                       max-width="48px"
+                       max-height="48px"
                 />
 
                 <v-img v-else
                        src="https://i.imgur.com/TSbgElk.png"
-                       max-width="50px"
-                       max-height="50px"
+                       max-width="48px"
+                       max-height="48px"
                 />
 
                 <span v-if="this.filmeSelecionado.vote_average*10 > 0"
-                      style="color: white; padding-left: 5px; letter-spacing: .016em; line-height:1;"> {{ this.filmeSelecionado.vote_average * 10
+                      style="font-size: 2em; color: white; padding-left: 5px; letter-spacing: .016em; line-height:1;"> {{ this.filmeSelecionado.vote_average * 10
                   }}%</span>
                 <span v-else
-                      style="color: white; padding-left: 3px; letter-spacing: .016em; line-height:1;"> -- </span>
+                      style="font-size: 2em; color: white; padding-left: 3px; letter-spacing: .016em; line-height:1;"> -- </span>
                 </center>
+                <br>
             <v-card-text style="color: whitesmoke; animation-fill-mode: revert">
               {{ this.filmeSelecionado.overview }}
             </v-card-text>               
@@ -91,14 +93,6 @@
               </v-row>
               
             </v-col>
-          
-          </v-card>
-          <v-card color="black">
-            <v-card-title style="color: whitesmoke"> Reviews </v-card-title>
-            <v-card color="black" v-for="review in reviews" :key="review.id">
-              <v-card-title v-text="review.author" style="color: whitesmoke"></v-card-title>
-              <v-card-text v-text="review.content" style="color: whitesmoke"></v-card-text>
-            </v-card>
           </v-card>
         </v-dialog>
       </v-row>
@@ -153,4 +147,18 @@ export default {
   margin-bottom: 0.625rem;
   padding-left: 5px;
 }
+
+  .v-card__title{
+    margin: 0;
+    text-transform: uppercase;
+    font-family: Neusa,Impact,Helvetica Neue,Arial,Sans-Serif;
+    font-size: 1.625em;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: .92;
+    letter-spacing: normal;
+    text-align: center;
+    color: #2a2c32;
+  }
 </style>
