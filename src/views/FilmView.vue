@@ -2,18 +2,25 @@
   <div class="filmes">
      <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
      <Grafico></Grafico>
+     <br>
     <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
     <Grafico></Grafico>
+         <br>
     <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
     <Grafico></Grafico>
+         <br>
     <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
     <Grafico></Grafico>
+         <br>
     <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
     <Grafico></Grafico>
+         <br>
     <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
     <Grafico></Grafico>
+         <br>
     <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
     <Grafico></Grafico>
+         <br>
   </div>
 </template>
 <script>
@@ -30,16 +37,28 @@ components: {
 
 <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
-  .v-card__title:before{
+  .v-card__title::before{
+    background-color: #940000;
+    content: ' ';
+    min-width: 20px;
+    height: 20px;
     position: absolute;
-    content: "";
-    height: 1.1em;
-    border-left: 3px solid #fa320a;
-    margin: -1px 0 0 -9px;
+    left: 0;
+    margin-left: 10px;
   }
-
+  .v-card__title::after{
+    position: absolute;
+    margin-left: 451px;
+    content: '';
+    width: 100%;
+    background-color: #940000;
+    min-width: 20px;
+    height: 20px;
+  }
   .v-card__title{
     font-family: 'Roboto', sans-serif;
+    float: initial;
+    padding-left: 25px;
   }
   
 </style>

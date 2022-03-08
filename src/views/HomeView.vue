@@ -42,7 +42,7 @@ export default {
     position: absolute;
     content: "";
     height: 1.1em;
-    border-left: 3px solid #fa320a;
+    border-left: 3px solid #940000;
     margin: -1px 0 0 -9px;
   }
 
