@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <v-card-title  class="justify-center " style="color: whitesmoke"> Upcoming Movies </v-card-title>
+    <v-card-title  class="justify-left; pl-9" style="color: whitesmoke;"> UPCOMING MOVIES </v-card-title>
     <EncarteFilme></EncarteFilme>
   </div>
 </template>
@@ -35,3 +35,19 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+  .v-card__title:before{
+    position: absolute;
+    content: "";
+    height: 1.1em;
+    border-left: 3px solid #fa320a;
+    margin: -1px 0 0 -9px;
+  }
+
+  .v-card__title{
+    font-family: 'Roboto', sans-serif;
+  }
+  
+</style>
