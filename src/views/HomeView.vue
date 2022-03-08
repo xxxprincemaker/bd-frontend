@@ -27,7 +27,7 @@ export default {
         .then((response) => {
           this.upcomingMovies = response.data.results;
         });
-      this.$store.commit("popularSearchDataTMDBAP", this.upcomingMovies);
+      this.$store.commit("pupularUpcomingMovies", this.upcomingMovies);
     }
   },
   mounted() {
