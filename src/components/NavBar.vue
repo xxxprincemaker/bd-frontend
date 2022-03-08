@@ -114,6 +114,8 @@ export default {
     },
     popularData(data) {
       this.$store.commit("popularSearchDataTMDBAP", data);
+      this.$store.commit('pupularUpcomingMovies', null);
+      this.$store.state.upcomingMovies = null;
     }
   }
 };

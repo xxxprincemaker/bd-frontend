@@ -87,6 +87,13 @@
               {{ this.filmeSelecionado.overview }}
             </v-card-text>
           </v-card>
+          <v-card color="black">
+            <v-card-title style="color: whitesmoke"> Reviews </v-card-title>
+            <v-card color="black" v-for="review in reviews" :key="review.id">
+              <v-card-title v-text="review.author" style="color: whitesmoke"></v-card-title>
+              <v-card-text v-text="review.content" style="color: whitesmoke"></v-card-text>
+            </v-card>
+          </v-card>
         </v-dialog>
       </v-row>
     </v-container>
@@ -95,11 +102,14 @@
 
 <script>
 
+import axios from "axios";
+
 export default {
   data: () => {
     return {
       maisInformacoes: false,
-      filmeSelecionado: Object
+      filmeSelecionado: Object,
+      reviews: Object
     };
   },
   methods: {
@@ -108,11 +118,21 @@ export default {
     },
     buscarFilmeSelecionado(filme) {
       this.filmeSelecionado = filme;
+      this.encontrarReviewsPorFilmeId(filme.id)
       this.maisInformacoes = !this.maisInformacoes;
-    }
+    },
+    async encontrarReviewsPorFilmeId(filmeId) {
+      await axios.get(`https://api.themoviedb.org/3/movie/${filmeId}/reviews?api_key=cc6013c19c9720200260a7c36d27130a&language=en-US&page=1`)
+        .then(response => {
+          this.reviews = response.data.results;
+        });
+    },
   },
   computed: {
     cardss() {
+      if(this.$store.state.upcomingMovies){
+        return this.$store.state.upcomingMovies
+      }
       return this.$store.state.searchDataTMDBAPI;
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <v-card-title  class="justify-center " style="color: whitesmoke"> Upcoming Movies </v-card-title>
+    <v-card-title  class="justify-center " style="color: whitesmoke" v-if="this.$store.state.searchDataTMDBAPI.length === 0"> Upcoming Movies </v-card-title>
     <EncarteFilme></EncarteFilme>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
         .then((response) => {
           this.upcomingMovies = response.data.results;
         });
-      this.$store.commit("popularSearchDataTMDBAP", this.upcomingMovies);
+      this.$store.commit("pupularUpcomingMovies", this.upcomingMovies);
     }
   },
   mounted() {
