@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <v-card-title  class="justify-left; pl-9" style="color: whitesmoke;"> UPCOMING MOVIES </v-card-title>
+    <v-card-title  v-if="this.$store.state.searchDataTMDBAPI.length === 0" class="justify-left; pl-9" style="color: whitesmoke;"> UPCOMING MOVIES </v-card-title>
     <EncarteFilme></EncarteFilme>
   </div>
 </template>

@@ -7,7 +7,7 @@
         </v-btn>
       </v-toolbar-items>
       <div class="d-flex align-center">
-        <v-card to="/" @click="popularData(null)">
+        <v-card to="/" @click="upcoming">
           <v-col>
             <v-row>
               <v-img
@@ -112,10 +112,21 @@ export default {
       this.popularData(this.results);
       await this.importarRota(5);
     },
+    async upcoming() {
+      await axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=cc6013c19c9720200260a7c36d27130a&language=en-US&page=1`)
+        .then((response) => {
+          this.upcomingMovies = response.data.results;
+        });
+      this.$store.commit("pupularUpcomingMovies", this.upcomingMovies);
+      this.popularBuscaEDespopular(this.upcomingMovies);
+    },
     popularData(data) {
       this.$store.commit("popularSearchDataTMDBAP", data);
       this.$store.commit('pupularUpcomingMovies', null);
-      this.$store.state.upcomingMovies = null;
+    },
+    popularBuscaEDespopular(data){
+      this.$store.commit("popularSearchDataTMDBAP", []);
+      this.$store.commit('pupularUpcomingMovies', data);
     }
   }
 };
