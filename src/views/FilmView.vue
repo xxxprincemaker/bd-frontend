@@ -3,6 +3,31 @@
      <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> FILMES COM 3 HORAS OU MAIS DE DURAÇÃO </v-card-title>
      <Grafico :optionss="this.rotaQuery1"></Grafico>
      <br>
+    <v-card-title class="justify-left; pl-9" style="color: whitesmoke;"> A QUANTIDADE DE FILMES QUE SAIRAM EM CADA ANO
+    </v-card-title>
+    <v-simple-table>
+      <template v-slot:default>
+        <thead>
+        <tr>
+          <th class="text-left">
+            Ano de Lançamento
+          </th>
+          <th class="text-left">
+            Quantidade de Filmes
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          v-for="item in rota8"
+          :key="item.release_year"
+        >
+          <td>{{ item.release_year }}</td>
+          <td>{{ item.qtdFilmes }}</td>
+        </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
   </div>
 </template>
 <script>
@@ -14,30 +39,37 @@ export default({
 components: {
     Grafico
   },
-  data: () => {
+  data () {
     return {
-      rotaQuery1: Object,
-      rotaQuery2: Object,
-      rotaQuery3: Object,
-      rotaQuery4: Object,
-      rotaQuery5: Object,
-      rotaQuery6: Object,
-      rotaQuery7: Object,
-      rotaQuery8: Object,
-      rotaQuery9: Object,
-      rotaQuery10: Object,
-    };
+      rota6: [],
+      rota7: [],
+      rota8: [],
+      rota9: [],
+      rota10: []
+    }
   },
   methods: {
-    async importarQuery(rota){
-      await rotasService.recuperarRota(rota).then(response => {
-        this.rotaQuery1 = response.data;
+    async importarQuery(){
+      await rotasService.recuperarRota(6).then(response => {
+        this.rota6 = response.data;
+      }).catch( () => {} )
+      await rotasService.recuperarRota(7).then(response => {
+        this.rota7 = response.data;
+      }).catch( () => {} )
+      await rotasService.recuperarRota(8).then(response => {
+        this.rota8 = response.data;
+      }).catch( () => {} )
+      await rotasService.recuperarRota(9).then(response => {
+        this.rota9 = response.data;
+      }).catch( () => {} )
+      await rotasService.recuperarRota(10).then(response => {
+        this.rota10 = response.data;
       }).catch( () => {} )
     }
   },
   mounted() {
-    this.importarQuery(1);
-  }
+    this.importarQuery();
+  },
 })
 </script>
 

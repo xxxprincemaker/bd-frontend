@@ -85,7 +85,7 @@ export default {
     items: [
       ["mdi-popcorn", "Filmes", "/movies"],
       ["mdi-account-supervisor-circle", "Diretor", "/directors"],
-      ["mdi-account", "Atores", "/actors"]
+      ["mdi-account", "Produtoras", "/produtoras"]
     ]
   }),
 
