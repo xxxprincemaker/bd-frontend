@@ -1,8 +1,8 @@
 <template>
   <nav>
     <v-app-bar app flat color="primary" dark>
-      <v-toolbar-items>
-        <v-btn @click="showSideBar()" icon>
+      <v-toolbar-items >
+        <v-btn @click="showSideBar()" icon >
           <v-icon> mdi-menu</v-icon>
         </v-btn>
       </v-toolbar-items>
